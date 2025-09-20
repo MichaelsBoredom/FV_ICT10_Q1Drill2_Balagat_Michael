@@ -1,31 +1,30 @@
 from pyscript import display, document
 
-def generate_message(event=None): 
-    #  I included the (event=None) 
-    #  to avoid errors beacuse it said 
-    #  "TypeError: generate_message() takes 0 positional arguments but 1 was given"
-    #  So it's necessary for some reason
+def generate_message(e): 
 
-
-    # I assigned the strings to variables in here
+    # value inputs
     name = document.getElementById("name").value
     age = document.getElementById("age").value
     school = document.getElementById("school").value
 
-    # I used escape characters: \t (tab), \" (quote) right here
+    # Restrict age to numbers only
+    if not age.isdigit():
+        document.getElementById("output").innerHTML
+        display("Please enter a valid age (numbers only).", target="output")
+    # Escape characters for \t (tab), \" (quote)
     notes = f"\t{name} is currently {age} years old and studies at \"{school}\".\n"
     notes += "\tThis information was gathered through input fields and displayed using\n"
     notes += "\ta multiline string in Python via PyScript."
 
-    # The multiline string for the profile info
+    # The multiline strings for the profile info
     profile = f"""
 <div class="card p-3 bg-light mt-3">
     <b>🧑‍🎓 Student Profile</b><br>
-    Name   : {name}<br>
-    Age    : {age}<br>
-    School : {school}<br>
+    \nName   : {name}<br>
+    \nAge    : {age}<br>
+    \nSchool : {school}<br>
     <br>
-    <span>📝 <b>Notes:</b></span><br>
+    <span>📝 \nNotes:</span><br>
     <pre>{notes}</pre>
 </div>
 """
